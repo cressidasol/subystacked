@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Suby — Free Video Subtitle Generator (SRT, VTT)</title>
-<meta name="description" content="Generate accurate subtitles from any video, free and private. AI transcription runs in your browser. Export SRT, VTT or TXT for YouTube, TikTok, Instagram and your website.">
+<meta name="description" content="Generate accurate subtitles from any video, privately. 3 videos free, then $5 for 20. AI transcription runs in your browser. Export SRT, VTT or TXT for YouTube, TikTok, Instagram and your website.">
 <meta property="og:title" content="Suby — Free Video Subtitle Generator">
-<meta property="og:description" content="Drop a video, get SRT/VTT subtitles. Runs in your browser — no uploads, no subscription.">
+<meta property="og:description" content="Drop a video, get SRT/VTT subtitles. Runs in your browser — no uploads, no subscription. $5 for 20 videos.">
 <meta name="theme-color" content="#030b0b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -118,6 +118,17 @@
   .marquee div { display: inline-block; animation: slide 40s linear infinite; }
   .marquee em { font-style: normal; color: var(--accent); margin: 0 .6em; }
   @keyframes slide { to { transform: translateX(-50%); } }
+  .credits { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 16px; padding-top: 16px; border-top: 1px dashed var(--line); }
+  .credits[hidden] { display: none; }
+  .credits #bal { color: var(--accent); font-size: 13px; flex: 1 1 100%; }
+  .credits input { flex: 1 1 220px; font: 14px var(--mono); border-radius: var(--radius); padding: 11px 14px; border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+  .credits input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .credits .btn { padding: 11px 16px; font-size: 14px; }
+  .price { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); max-width: 760px; }
+  .price h3 { font-size: 44px; margin: 8px 0; }
+  .price h3 small { font: 13px var(--mono); color: var(--muted); }
+  .price .btn { margin-top: 18px; }
+  .price .hot { border-color: var(--accent); box-shadow: 0 0 60px -30px var(--accent); }
   footer { color: var(--muted); font: 12px var(--mono); text-align: center; padding: 40px 0; }
 
   @media (max-width: 860px) { .hero { grid-template-columns: 1fr; padding-top: 28px; } }
@@ -130,7 +141,7 @@
 <div class="wrap">
   <header>
     <a class="logo" href="#">suby <b>CC</b></a>
-    <nav><a href="#how">How it works</a><a href="#faq">FAQ</a><a class="cta" href="#tool">Try it free</a></nav>
+    <nav><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a><a class="cta" href="#tool">Try 3 free</a></nav>
   </header>
 
   <main>
@@ -138,7 +149,7 @@
       <div>
         <span class="tag"><span class="rec" aria-hidden="true"></span>REC · runs 100% in your browser</span>
         <h1>Every word,<br><span class="hl" data-scramble aria-hidden="true">on screen.</span><span class="sr">on screen.</span></h1>
-        <p class="lede">Drop a video. Get accurate, timestamped subtitles. No uploads, no sign-up, no per-minute pricing. Just captions your audience can read on mute.</p>
+        <p class="lede">Drop a video. Get accurate, timestamped subtitles. No uploads, no sign-up, no subscription. Just captions your audience can read on mute.</p>
         <div class="btns">
           <a class="btn go" href="#tool">Generate subtitles →</a>
           <a class="btn" href="#how">See how it works</a>
@@ -182,6 +193,13 @@
           </label>
           <button id="go" class="primary" disabled>Generate subtitles</button>
         </div>
+        <div class="credits" id="credits" hidden>
+          <span id="bal" class="mono"></span>
+          <label class="sr" for="key">License key</label>
+          <input id="key" placeholder="Paste license key" autocomplete="off" spellcheck="false">
+          <button id="apply">Apply</button>
+          <a id="buy" class="btn go" target="_blank" rel="noopener">Buy 20 videos · $5</a>
+        </div>
         <div id="status" role="status" aria-live="polite"></div>
         <progress id="bar" hidden></progress>
 
@@ -208,10 +226,20 @@
       </div>
     </section>
 
+    <section id="pricing">
+      <p class="cue-h"><b>2</b> · 00:00:30,000 --&gt; 00:00:45,000</p>
+      <h2>Five bucks. Twenty videos.</h2>
+      <div class="grid price">
+        <div class="card"><span class="n">FREE</span><h3>$0</h3><p>3 videos to try it. No card, no account.</p></div>
+        <div class="card hot"><span class="n">CREDIT PACK</span><h3>$5 <small>one-time</small></h3><p>20 videos of any length. SRT, VTT and TXT export. Credits never expire. No subscription.</p><a class="btn go" id="buy2" target="_blank" rel="noopener">Buy credits →</a></div>
+      </div>
+    </section>
+
     <section id="faq">
-      <p class="cue-h"><b>2</b> · 00:00:30,000 --&gt; 00:01:00,000</p>
+      <p class="cue-h"><b>3</b> · 00:00:45,000 --&gt; 00:01:00,000</p>
       <h2>Questions, captioned.</h2>
-      <details><summary>Is it really free?</summary><p>Yes. Transcription runs on your own computer, so there are no servers for us to bill you for.</p></details>
+      <details><summary>How much does it cost?</summary><p>Your first 3 videos are free. After that, $5 buys 20 videos, paid once by card or PayPal through Gumroad. You get a license key by email; paste it into the tool. No account, no subscription.</p></details>
+      <details><summary>Why so cheap?</summary><p>The AI runs on your own computer, so we have no servers to pay for, and we don't pass server costs on to you.</p></details>
       <details><summary>Do subtitles help SEO?</summary><p>Yes. Search engines can't watch video, but they can read captions and transcripts. Upload the SRT to YouTube and paste the TXT transcript on your page.</p></details>
       <details><summary>Is my video private?</summary><p>Your file is processed in your browser tab and never sent anywhere. Only the AI model is downloaded, once, and then cached.</p></details>
       <details><summary>How long can my video be?</summary><p>Long videos work, but speed depends on your device. A laptop with a modern GPU handles about an hour of audio in a few minutes.</p></details>
@@ -220,8 +248,8 @@
 </div>
 
 <div class="marquee" aria-hidden="true"><div>
-  Watchable on mute <em>✦</em> Accessible by default <em>✦</em> Searchable by Google <em>✦</em> Private by design <em>✦</em> Free forever <em>✦</em>
-  Watchable on mute <em>✦</em> Accessible by default <em>✦</em> Searchable by Google <em>✦</em> Private by design <em>✦</em> Free forever <em>✦</em>
+  Watchable on mute <em>✦</em> Accessible by default <em>✦</em> Searchable by Google <em>✦</em> Private by design <em>✦</em> $5 for 20 videos <em>✦</em>
+  Watchable on mute <em>✦</em> Accessible by default <em>✦</em> Searchable by Google <em>✦</em> Private by design <em>✦</em> $5 for 20 videos <em>✦</em>
 </div></div>
 <footer>suby · captions for everyone · [END OF TRANSCRIPT]</footer>
 
@@ -285,6 +313,7 @@
 
 <script type="module">
 import { stamp, toCues, toSRT, toVTT, toTXT } from './format.js';
+import { CONFIG, checkKey } from './credits.js';
 
 const $ = id => document.getElementById(id);
 const worker = new Worker('./worker.js', { type: 'module' });
@@ -302,8 +331,38 @@ drop.ondragover = e => { e.preventDefault(); drop.classList.add('over'); };
 drop.ondragleave = () => drop.classList.remove('over');
 drop.ondrop = e => { e.preventDefault(); drop.classList.remove('over'); pick(e.dataTransfer.files[0]); };
 
+// Credits: free videos counted per browser, paid ones on the Gumroad license key.
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+const paid = !!CONFIG.productId;
+let key = store.get('suby_key') || '', keyLeft = null, run = null;
+const freeLeft = () => Math.max(0, CONFIG.free - Number(store.get('suby_free') || 0));
+function showBal() {
+  $('bal').textContent = key ? (keyLeft === null ? 'License key saved.' : `${keyLeft} paid video${keyLeft === 1 ? '' : 's'} left`) + (freeLeft() ? ` + ${freeLeft()} free` : '')
+    : `${freeLeft()} of ${CONFIG.free} free videos left. Then $5 for ${CONFIG.perPack}.`;
+}
+if (paid) {
+  $('credits').hidden = false; $('buy').href = $('buy2').href = CONFIG.buyUrl; $('key').value = key; showBal();
+} else { $('buy2').href = '#tool'; $('buy2').removeAttribute('target'); }
+$('apply').onclick = async () => {
+  const k = $('key').value.trim(); if (!k) return say('Paste the license key from your Gumroad email.');
+  say('Checking key…', null);
+  try {
+    const r = await checkKey(k);
+    if (!r.ok) return say(r.reason);
+    key = k; keyLeft = r.left; store.set('suby_key', k); showBal(); say(`Key added: ${r.left} videos left.`);
+  } catch { say("Couldn't reach Gumroad to check the key. Check your connection."); }
+};
+
 let duration = 0;
 $('go').onclick = async () => {
+  if (paid) {
+    if (freeLeft()) run = 'free';
+    else if (!key) return say(`You've used your ${CONFIG.free} free videos. Buy a pack ($5 for ${CONFIG.perPack} videos) and paste your license key below.`);
+    else {
+      try { const r = await checkKey(key); keyLeft = r.left; showBal(); if (!r.ok) return say(r.reason); run = 'key'; }
+      catch { return say("Couldn't reach Gumroad to check your credits. Check your connection."); }
+    }
+  }
   $('go').disabled = true; say('Reading audio…', null);
   let audio;
   try {
@@ -324,7 +383,13 @@ worker.onmessage = ({ data }) => {
   if (data.type === 'download') say(`Downloading AI model (one time)… ${Math.round(data.progress)}%`, data.progress / 100);
   if (data.type === 'transcribing') say('Transcribing… this can take a minute.', null);
   if (data.type === 'error') { say('Something went wrong: ' + data.message); $('go').disabled = false; }
-  if (data.type === 'done') { cues = toCues(data.chunks, duration); render(); say(`Done: ${cues.length} captions.`); $('go').disabled = false; }
+  if (data.type === 'done') {
+    cues = toCues(data.chunks, duration); render(); say(`Done: ${cues.length} captions.`); $('go').disabled = false;
+    // Charge only after a successful run, so failed videos cost nothing.
+    if (run === 'free') { store.set('suby_free', String(CONFIG.free - freeLeft() + 1)); showBal(); }
+    if (run === 'key') checkKey(key, true).then(r => { keyLeft = r.left; showBal(); }).catch(() => {});
+    run = null;
+  }
 };
 
 function render() {
