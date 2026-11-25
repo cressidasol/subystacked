@@ -1,0 +1,6 @@
+{
+  "name": "subystacked",
+  "compatibility_date": "2026-10-01",
+  // Static site only: no Worker script, just serve public/.
+  "assets": { "directory": "./public" }
+}
